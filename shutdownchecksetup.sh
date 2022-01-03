@@ -47,6 +47,7 @@ try:
 				print("\n=====================================================================================")
 				print("            SHUTDOWN request from GPIO", SHUTDOWN, ", halting Rpi ...")
 				print("=====================================================================================")
+				os.system("/usr/bin/php /home/pi/raspi-player/bin/console app:shutdown")
 				os.system("sudo poweroff")
 				sys.exit()
 			shutdownSignal = GPIO.input(SHUTDOWN)
@@ -54,6 +55,7 @@ try:
 			print("\n=====================================================================================")
 			print("            REBOOT request from GPIO", SHUTDOWN, ", recycling Rpi ...")
 			print("=====================================================================================")
+			os.system("/usr/bin/php /home/pi/raspi-player/bin/console app:shutdown")
 			os.system("sudo reboot")
 			sys.exit()
 		if GPIO.input(SHUTDOWN): #before looping we must make sure the shutdown signal went low
